@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 
-df_PlayTimeGenre = pd.read_csv("/user/Documents/SANDRA 2023/HENRY/PROYECTO 1 RESPALDO/DATA FUNCIONES/PlayTimeGenre.csv")
+df_PlayTimeGenre = pd.read_csv("DATA FUNCIONES/PlayTimeGenre.csv")
 
 app = FastAPI(title='PI1 - Sandra Meneses')
 
