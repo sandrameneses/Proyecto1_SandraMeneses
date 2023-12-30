@@ -30,7 +30,6 @@ matplotlib-inline==0.1.6
 mysql-connector-python==8.0.32
 nest-asyncio==1.5.7
 nltk==3.8.1
-numpy==1.25.2
 packaging==23.1
 pandas==2.0.3
 parso==0.8.3
@@ -66,3 +65,4 @@ watchfiles==0.21.0
 wcwidth==0.2.6
 websockets==12.0
 scikit-learn==0.24.2
+numpy==1.21.0
