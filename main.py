@@ -50,3 +50,11 @@ def users_no_recommend(x: int):
 def sentiment_analysis(x: int):
 
     return FU.sentiment_analysis(x)
+
+# Recomendacion 1
+
+@app.get(path=("/users_recommend", "/users_no_recommend"))
+
+def get_item_recommendations(game_name):
+
+    return FU.recommended_games[1:] 

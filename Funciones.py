@@ -4,6 +4,11 @@
 import pandas as pd
 import numpy as np
 
+! pip install scikit-learn
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.neighbors import NearestNeighbors
+import pandas as pd
+
 
 df_PlayTimeGenre = pd.read_csv("DATA FUNCIONES/PlayTimeGenre.csv")
 
@@ -119,4 +124,36 @@ def sentiment_analysis(x: int):
               "Positiv0": positivo}
 
     return resultado
+
+
+# Funcion recomendacion 1
+
+# Cargar los DataFrames UsersRecommend.csv y UsersNoRecommend.csv
+users_recommend = pd.read_csv('Proyecto1_SandraMeneses/DATA FUNCIONES/UsersRecommend.csv')
+users_no_recommend = pd.read_csv('Proyecto1_SandraMeneses/DATA FUNCIONES/UsersNoRecommend.csv')
+
+# Combinar ambos DataFrames para obtener información completa sobre los juegos
+all_games_info = pd.concat([users_recommend, users_no_recommend], ignore_index=True)
+
+# Crear una matriz de características (item-ítem)
+item_item_matrix = all_games_info.pivot_table(index='Juego', columns='Año', values='Recomendaciones', fill_value=0)
+
+# Calcular la similitud del coseno entre los ítems
+item_similarity = cosine_similarity(item_item_matrix.T)
+
+# Crear un modelo de vecinos más cercanos basado en la similitud del coseno
+model_item_item = NearestNeighbors(metric='cosine', algorithm='brute', n_neighbors=5)
+model_item_item.fit(item_similarity)
+
+# Función para obtener recomendaciones para un juego dado
+def get_item_recommendations(game_name):
+    if game_name not in all_games_info['Juego'].values:
+        return f"El juego '{game_name}' no está en el conjunto de datos."
+    
+    game_index = all_games_info[all_games_info['Juego'] == game_name].index[0]
+    distances, indices = model_item_item.kneighbors(item_similarity[game_index].reshape(1, -1))
+    recommended_games = [all_games_info['Juego'].iloc[i] for i in indices.flatten()]
+    
+    return recommended_games[1:]  # Excluir el propio juego de las recomendaciones
+
 
