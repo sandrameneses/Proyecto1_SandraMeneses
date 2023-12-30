@@ -8,6 +8,33 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
 import pandas as pd
 
+# Instalar las dependencias necesarias
+try:
+    import pandas as pd
+    from sklearn.metrics.pairwise import cosine_similarity
+    # Importa cualquier otra librería que necesites aquí
+
+except ImportError as e:
+    print(f"Error al importar la librería: {e}")
+    print("Instalando las dependencias...")
+    
+    # Intenta instalar las dependencias usando pip
+    try:
+        from pip._internal import main as pipmain
+    except ImportError:
+        from pip import main as pipmain
+    
+    pipmain(['install', 'pandas', 'scikit-learn'])
+    
+    # Intenta importar nuevamente después de la instalación
+    try:
+        import pandas as pd
+        from sklearn.metrics.pairwise import cosine_similarity
+        # Importa cualquier otra librería que necesites aquí
+        print("Librerías instaladas correctamente.")
+    except ImportError as e:
+        print(f"Error al importar la librería después de la instalación: {e}")
+
 
 df_PlayTimeGenre = pd.read_csv("DATA FUNCIONES/PlayTimeGenre.csv")
 
