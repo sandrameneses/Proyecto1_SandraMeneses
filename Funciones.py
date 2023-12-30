@@ -4,7 +4,6 @@
 import pandas as pd
 import numpy as np
 
-! pip install scikit-learn
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
 import pandas as pd
@@ -129,8 +128,8 @@ def sentiment_analysis(x: int):
 # Funcion recomendacion 1
 
 # Cargar los DataFrames UsersRecommend.csv y UsersNoRecommend.csv
-users_recommend = pd.read_csv('Proyecto1_SandraMeneses/DATA FUNCIONES/UsersRecommend.csv')
-users_no_recommend = pd.read_csv('Proyecto1_SandraMeneses/DATA FUNCIONES/UsersNoRecommend.csv')
+users_recommend = pd.read_csv('DATA FUNCIONES/UsersRecommend.csv')
+users_no_recommend = pd.read_csv('DATA FUNCIONES/UsersNoRecommend.csv')
 
 # Combinar ambos DataFrames para obtener información completa sobre los juegos
 all_games_info = pd.concat([users_recommend, users_no_recommend], ignore_index=True)
@@ -154,6 +153,4 @@ def get_item_recommendations(game_name):
     distances, indices = model_item_item.kneighbors(item_similarity[game_index].reshape(1, -1))
     recommended_games = [all_games_info['Juego'].iloc[i] for i in indices.flatten()]
     
-    return recommended_games[1:]  # Excluir el propio juego de las recomendaciones
-
-
+    return recommended_games[1:]
