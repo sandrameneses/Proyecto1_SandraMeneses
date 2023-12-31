@@ -154,6 +154,10 @@ def sentiment_analysis(x: int):
 
 # Funcion recomendacion 1
 
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.neighbors import NearestNeighbors
+import pandas as pd
+
 # Cargar los DataFrames UsersRecommend.csv y UsersNoRecommend.csv
 users_recommend = pd.read_csv('DATA FUNCIONES/UsersRecommend.csv')
 users_no_recommend = pd.read_csv('DATA FUNCIONES/UsersNoRecommend.csv')
@@ -175,9 +179,15 @@ model_item_item.fit(item_similarity)
 def get_item_recommendations(game_name):
     if game_name not in all_games_info['Juego'].values:
         return f"El juego '{game_name}' no está en el conjunto de datos."
-    
-    game_index = all_games_info[all_games_info['Juego'] == game_name].index[0]
-    distances, indices = model_item_item.kneighbors(item_similarity[game_index].reshape(1, -1))
-    recommended_games = [all_games_info['Juego'].iloc[i] for i in indices.flatten()]
-    
-    return recommended_games[1:]
+
+     # Obtener el índice del juego en la matriz
+    game_index = all_games_info.index[all_games_info['Juego'] == game_name][0]
+
+     # Obtener los vecinos más cercanos
+    _,indices = model_item_item.kneighbors([item_similarity[game_index]])
+
+     # Obtener los nombres de los juegos recomendados
+    recommended_games = all_games_info.iloc[indices[0]]['Juego'].tolist()[1:]
+
+    return f"Juegos recomendados para '{game_name}': {recommended_games}"
+

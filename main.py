@@ -55,10 +55,8 @@ def sentiment_analysis(x: int):
 
 from Funciones import get_item_recommendations
 
-@app.get("/item_recommendations/{game_name}")
-def item_recommendations(game_name: str):
-    try:
-        recommendations = get_item_recommendations(game_name)
-        return {"game_name": game_name, "recommendations": recommendations}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
+@app.get(path = "/get_item_recommendations")
+
+def get_item_recommendations(game_name: str):
+    
+    return FU.get_item_recommendations(game_name)
