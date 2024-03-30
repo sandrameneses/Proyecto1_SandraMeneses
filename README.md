@@ -18,6 +18,6 @@ En este proyecto asumi el rol de ingeniero MLOps, teniendo responsabilidades de 
 
  - PlayTimeGenre: Toma el género ingresado devuelve el año con más horas jugadas por los usuarios.
  - UserForGenre: Para el género ingresado devuelve el usuario que acumula mas horas jugadas y una lista de horas acumuladas por año. 
- - Recomendación de los usuarios: Para el año ingresado, devuelve el top 3 de juegos más recomendados.
+ - Users_recommend: Para el año ingresado, devuelve el top 3 de juegos más recomendados.
  - UsersNotRecommend: Para el año ingresado, devuelve el top 3 de juegos menos recomendados.
  - Sentiment_analysis: Para el año ingresado, devuelve una lista con la cantidad de reseñas de los usuarios. Categorizadas con análisis de sentimiento.
