@@ -1,17 +1,11 @@
-# Proyecto1_SandraMeneses
- P1Henry
+# **Proyecto MLOps**
 
- En este repositorio se presenta el desarrollo para el Proyecto 1 de Henry del Part Time 05 de Data Science.
+## **Recomendaciones a usuarios sobre Videojuegos**
 
- Para ello de acuerdo con la Data entregada y las directrices del Proyecto se realizo lo siguiente:
+## **Objetivo**
 
- 1. Extraccion Datos
- 2. ETL
- 3. Funciones
-  4. Main para API
- 5. Deploy en Render
- 6. EDA
+En este proyecto asumi el rol de ingeniero MLOps, teniendo responsabilidades de ingeniero de datos y científico de datos, para la plataforma multinacional de videojuegos Steam. El objetivo es desarrollar un Producto Mínimo Viable (MVP) que incluya una API y la aplicación Machine Learning. Estos modelos se abordan con el análisis de sentimientos sobre los comentarios de los usuarios sobre juegos, las recomendaciones de juegos basadas en la información del usuario y la similitud entre juegos por género.
 
- Con este desarrollo se espera cumplir con lo minimo requerido en el Proyecto
+
 
 
